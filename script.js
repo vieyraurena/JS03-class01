@@ -51,23 +51,13 @@ function imprimirError(mensaje) {
 
 // COMIENZA ACA
 
-function sumar(n1, n2) {
-  return n1 + n2;
-}
+const sumar = (n1, n2) => n1 + n2;
+const restar = (n1, n2) => n1 - n2;
+const multiplicar = (n1, n2) => n1 * n2;
+const dividir = (n1, n2) => n1 / n2;
 
-function restar(n1, n2) {
-  return n1 - n2;
-}
 
-function multiplicar(n1, n2) {
-  return n1 * n2;
-}
-
-function dividir(n1, n2) {
-  return n1 / n2;
-}
-
-function calcularOperaciones() {
+const calcularOperaciones = () => {
   const valor1 = parseInt(input1.value);
   const valor2 = parseInt(input2.value);
 
@@ -85,13 +75,19 @@ function calcularOperaciones() {
   } else {
     imprimirResultado(dividir(valor1, valor2));
   }
+
 }
 
-function validar() {
+
+const validar = () => {
   resultado.innerText = '';
   
-  if (input1.value === '' || input2.value === '' || operacion.value === '') {
-    imprimirError('No se puede efectuar la operación, todos los campos deben de estar llenos')
+  if(input1.value === '') {
+    imprimirError('No se puede efectuar la operación, el primer campo está vacío.')
+  } else if (operacion.value === '') {
+    imprimirError('No se puede efectuar la operación, debes de seleccionar una operación.')
+  } else if (input2.value === '') {
+    imprimirError('No se puede efectuar la operación, el segundo campo está vacío.')
   } else {
     calcularOperaciones();
   }
